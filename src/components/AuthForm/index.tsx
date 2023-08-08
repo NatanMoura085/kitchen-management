@@ -1,11 +1,16 @@
+import React, { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha"; 
+
 interface AuthFormProps {
   title: string;
   actionText: string;
-  showRememberMe: string;
-  showForgotPassword: string;
-  showSignUpLink: string;
+  showRememberMe: boolean;
+  showForgotPassword: boolean;
+  showSignUpLink: boolean;
+  useReCAPTCHA: boolean;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }
+
 const AuthForm = ({
   title,
   actionText,
@@ -13,7 +18,14 @@ const AuthForm = ({
   showRememberMe,
   showForgotPassword,
   showSignUpLink,
+  useReCAPTCHA,
 }: AuthFormProps) => {
+  const [forgotPasswordMode, setForgotPasswordMode] = useState(false);
+
+  const handleToggleForgotPassword = () => {
+    setForgotPasswordMode(!forgotPasswordMode);
+  };
+
   return (
     <section className="bg-gray-400 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -50,22 +62,28 @@ const AuthForm = ({
                   required
                 />
               </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
+              {useReCAPTCHA && forgotPasswordMode ? (
+                <div className="mb-4">
+                  <ReCAPTCHA sitekey="YOUR_RECAPTCHA_SITE_KEY" />
+                </div>
+              ) : (
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="••••••••"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required={!forgotPasswordMode}
+                  />
+                </div>
+              )}
               {showRememberMe && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-start">
@@ -88,12 +106,13 @@ const AuthForm = ({
                     </div>
                   </div>
                   {showForgotPassword && (
-                    <a
-                      href="#"
+                    <button
+                      type="button"
                       className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      onClick={handleToggleForgotPassword}
                     >
                       Forgot password?
-                    </a>
+                    </button>
                   )}
                 </div>
               )}

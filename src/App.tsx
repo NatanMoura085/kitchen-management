@@ -1,4 +1,3 @@
-import Login from "./components/Login/Login";
 import Ways from "./routes";
 
 const App = () => {

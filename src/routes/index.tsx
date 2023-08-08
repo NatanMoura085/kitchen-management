@@ -12,7 +12,7 @@ const Ways = () => {
       <Routes>
         {isLogged ? (
           <Route path="/" element={<PageLayout />}>
-            <Route index element={<PageHome />} />
+            <Route path="/home" index element={<PageHome />} />
 
           </Route>
         ) : (
