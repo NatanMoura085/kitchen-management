@@ -1,11 +1,10 @@
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import Ways from "./routes";
 
 const App = () => {
   return (
-    <main className="bg-emerald-300">
+    <main className="bg-black">
       <Ways />
-      <Login/>
     </main>
   );
 };

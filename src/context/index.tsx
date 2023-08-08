@@ -19,14 +19,15 @@ interface KitchenContextType {
 
 const initialState: KitchenContextType = {
   orders: [],
-  dispatch: () => {
+  dispatch: () => null
   
-  },
+  
 };
 
 export const Context = createContext<KitchenContextType | undefined>(undefined);
 
 const KitchenProvider: React.FC<ProvideProps> = ({ children }) => {
+  
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (

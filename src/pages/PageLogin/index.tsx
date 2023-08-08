@@ -1,10 +1,11 @@
-import Login from "../../components/Login"
+import Login from "../../components/Login/Login";
 
-const PageLogin = ()=>{
+const PageLogin = () => {
+  return (
+    <div className="bg-slate-600">
+      <Login />
+    </div>
+  );
+};
 
-    return(
-        <Login/>
-    )
-}
-
-export default PageLogin
+export default PageLogin;
