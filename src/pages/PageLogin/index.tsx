@@ -1,9 +1,24 @@
-import Login from "../../components/Login/Login";
+import AuthForm from "../../components/AuthForm";
 
-const PageLogin = () => {
+interface PageLoginProps{
+  onLogin:()=>void
+}
+const PageLogin = ({onLogin}:PageLoginProps) => {
+  const handlePasswordRecovery = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="bg-slate-600">
-      <Login />
+      <AuthForm
+        title="Sign in to your account"
+        actionText="Sign in"
+        showRememberMe={true}
+        showForgotPassword={true}
+        showSignUpLink={true}
+        useReCAPTCHA={true}
+        onSubmit={handlePasswordRecovery}
+      />
     </div>
   );
 };

@@ -1,15 +1,12 @@
-import RegistrationScreen from "../PageReset"
 
 
-const PageHome = () =>{
+const PageHome = () => {
+  return (
+    <main className="bg-slate-500 h-screen">
+        <p>Home</p>
+    
+    </main>
+  );
+};
 
-    return(
-        <main className="bg-slate-500 h-screen">
- <RegistrationScreen/>
-        </main>
-    )
-
-      
-}
-
-export default PageHome
+export default PageHome;

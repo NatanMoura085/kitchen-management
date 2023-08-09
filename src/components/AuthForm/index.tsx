@@ -21,6 +21,7 @@ const AuthForm = ({
   useReCAPTCHA,
 }: AuthFormProps) => {
   const [forgotPasswordMode, setForgotPasswordMode] = useState(false);
+  const key = '6LcK05InAAAAAKW-Wx8beMnd1_6OuFCMOfV1g5Xu' 
 
   const handleToggleForgotPassword = () => {
     setForgotPasswordMode(!forgotPasswordMode);
@@ -64,7 +65,7 @@ const AuthForm = ({
               </div>
               {useReCAPTCHA && forgotPasswordMode ? (
                 <div className="mb-4">
-                  <ReCAPTCHA sitekey="YOUR_RECAPTCHA_SITE_KEY" />
+                  <ReCAPTCHA sitekey={key} />
                 </div>
               ) : (
                 <div>
@@ -84,7 +85,7 @@ const AuthForm = ({
                   />
                 </div>
               )}
-              {showRememberMe && (
+              {showRememberMe && !forgotPasswordMode && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-start">
                     <div className="flex items-center h-5">
@@ -122,7 +123,7 @@ const AuthForm = ({
               >
                 {actionText}
               </button>
-              {showSignUpLink && (
+              {showSignUpLink && !forgotPasswordMode && (
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <a

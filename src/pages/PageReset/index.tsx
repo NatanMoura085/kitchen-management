@@ -1,14 +1,14 @@
 import React from "react";
 import AuthForm from "../../components/AuthForm";
 
-const PasswordRecovery = () => {
+const PageReset = () => {
   const handlePasswordRecovery = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 
   return (
     <AuthForm
-      title="Password Recovery"
+      title="Password "
       actionText="Recover Password"
       showRememberMe={false}
       showForgotPassword={true}
@@ -19,4 +19,4 @@ const PasswordRecovery = () => {
   );
 };
 
-export default PasswordRecovery;
+export default PageReset;

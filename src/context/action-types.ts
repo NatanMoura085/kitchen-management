@@ -7,7 +7,7 @@ export const SET_COOKING_TIME = "SET_COOKING_TIME";
 export const CLEAR_ORDERS = "CLEAR_ORDERS";
 
 
-// Interfaces para as ações
+
 interface AddOrderAction {
     type: typeof ADD_ORDER;
     payload: Order;
