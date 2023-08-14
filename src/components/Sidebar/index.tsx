@@ -1,11 +1,46 @@
-export default function SideBar() {
-  return (
-    <>
+import React, { useState } from 'react';
+
+interface Props {
+    onClick: () => void;
+}
+
+const SideBar: React.FC<Props> = ({ onClick }) => {
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+        onClick(); // Chama a função onClick passada como prop
+    };
+
+    return (
+      <>
       <aside
-        id="logo-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-        aria-label="Sidebar"
+      id="logo-sidebar"
+      className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform ${
+        sidebarOpen ? '' : '-translate-x-full'
+      } bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+      aria-label="Sidebar"
+    >
+      <button
+        onClick={toggleSidebar}
+        className="absolute top-0 right-0 p-3 text-gray-500 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
       >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div
+        onClick={toggleSidebar}
+        className={`fixed top-0 left-0 w-full h-full bg-transparent ${
+          sidebarOpen ? 'block' : 'hidden'
+        }`}
+      />
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             <li>
@@ -145,6 +180,8 @@ export default function SideBar() {
           </ul>
         </div>
       </aside>
-    </>
+  </>
   );
 }
+
+export default SideBar
