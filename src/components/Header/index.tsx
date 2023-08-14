@@ -34,7 +34,7 @@ const Header = ()=>{
                   alt="FlowBite Logo"
                 />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                  Flowbite
+                 NatanBite
                 </span>
               </a>
             </div>

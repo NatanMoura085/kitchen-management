@@ -1,10 +1,12 @@
+import DataView from "../../components/DataView";
+import SideBar from "../../components/Sidebar";
 
 
-const PageHome = () => {
+const PageHome = () => {  
   return (
-    <main className="bg-slate-500 h-screen">
-        <p>Home</p>
-    
+    <main className="bg-slate-50 flex justify-center ">
+    <SideBar/>
+    <DataView/> 
     </main>
   );
 };
